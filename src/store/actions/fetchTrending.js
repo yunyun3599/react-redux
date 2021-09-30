@@ -9,12 +9,11 @@ export const fetchTrendData = (data) => {
   };
 };
 
-export const fetchTrending = async () => {
-  const response = await axios
+export const fetchTrending = (dispatch) => {
+  axios
     .get(`${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=en-US`)
-    .then((response) => response.data)
+    .then((response) => dispatch(fetchTrendData(response.data)))
     .catch((error) => {
       console.log(error);
     });
-  return fetchTrendData(response);
 };

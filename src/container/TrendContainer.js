@@ -4,19 +4,18 @@ import { fetchTrending } from "../store/actions/fetchTrending";
 
 const TrendContainer = () => {
   const dispatch = useDispatch();
-  const [TrendData, setTrendData] = useState({ results: [] });
 
   useEffect(() => {
-    dispatch(fetchTrending()).then((response) => setTrendData(response.data));
-    //fetchTrending(dispatch);
+    fetchTrending(dispatch);
   }, []);
 
-  // const TrendData = useSelector((state) => state.trending.movies) || {
-  //   results: [],
-  // };
+  const TrendData = useSelector((state) => state.trending.movies) || {
+    results: [],
+  };
 
   return (
     <div>
+      <h1>Trending</h1>
       {TrendData.results &&
         TrendData.results.map((movie) => (
           <img
