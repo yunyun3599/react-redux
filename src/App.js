@@ -4,7 +4,9 @@ import TrendContainer from "./container/TrendContainer";
 function App() {
   return (
     <div>
-      <TrendContainer />
+      <div style={{ width: "50%" }}>
+        <TrendContainer />
+      </div>
     </div>
   );
 }

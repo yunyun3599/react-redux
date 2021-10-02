@@ -22,7 +22,7 @@ const TrendContainer = () => {
       {TrendData.results &&
         TrendData.results.map((movie) => (
           <img
-            style={{ width: "60%" }}
+            style={{ width: "80%" }}
             alt="movie poster"
             src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
             key={movie.id}
