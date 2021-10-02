@@ -7,13 +7,13 @@ import promiseMiddleware from "redux-promise";
 import { Provider } from "react-redux";
 import rootReducer from "./store/reducers"; /*2차*/
 
-const store = createStore(
-  rootReducer,
-  applyMiddleware(promiseMiddleware, ReduxThunk)
-);
+const createStoreWithMiddleware = applyMiddleware(
+  promiseMiddleware,
+  ReduxThunk
+)(createStore);
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={createStoreWithMiddleware(rootReducer)}>
     <App />
   </Provider>,
   document.getElementById("root")

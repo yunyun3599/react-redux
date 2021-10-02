@@ -7,7 +7,9 @@ const TrendContainer = () => {
   const [TrendData, setTrendData] = useState({ results: [] });
 
   useEffect(() => {
-    dispatch(fetchTrending()).then((response) => setTrendData(response.data));
+    dispatch(fetchTrending()).then((response) => {
+      setTrendData(response.payload);
+    });
     //fetchTrending(dispatch);
   }, []);
 
