@@ -8,13 +8,12 @@ export default function trendingReducer(state = [], action) {
         movies: action.data,
       };
     case DELETE_TRENDING:
-      console.log("Hh", state.movies);
-      const movies = state.movies.results;
+      const movies = state.movies;
       return {
         ...state,
         movies: {
           ...movies,
-          results: movies.filter((movie) => movie.id !== action.id),
+          results: movies.results.filter((movie) => movie.id !== action.id),
         },
       };
     default:
