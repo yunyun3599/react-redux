@@ -1,4 +1,4 @@
-import { FETCH_TRENDING } from "../actions";
+import { FETCH_TRENDING, DELETE_TRENDING } from "../actions";
 
 export default function trendingReducer(state = [], action) {
   switch (action.type) {
@@ -6,6 +6,16 @@ export default function trendingReducer(state = [], action) {
       return {
         ...state,
         movies: action.data,
+      };
+    case DELETE_TRENDING:
+      console.log("Hh", state.movies);
+      const movies = state.movies.results;
+      return {
+        ...state,
+        movies: {
+          ...movies,
+          results: movies.filter((movie) => movie.id !== action.id),
+        },
       };
     default:
       return state;

@@ -1,6 +1,6 @@
 import { BASE_URL, API_KEY } from "../../config";
 import axios from "axios";
-import { FETCH_TRENDING } from ".";
+import { FETCH_TRENDING, DELETE_TRENDING } from ".";
 
 export const fetchTrendData = (data) => {
   return {
@@ -16,4 +16,15 @@ export const fetchTrending = (dispatch) => {
     .catch((error) => {
       console.log(error);
     });
+};
+
+export const deleteTrendData = (id) => {
+  return {
+    type: DELETE_TRENDING,
+    id,
+  };
+};
+
+export const deleteTrending = (dispatch, id) => {
+  dispatch(deleteTrendData(id));
 };

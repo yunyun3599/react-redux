@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchTrending, deleteTrending } from "../store/actions/fetchTrending";
+import { fetchUpcoming } from "../store/actions/fetchUpcoming";
 
-const TrendContainer = () => {
+const UpcomingContainer = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchTrending(dispatch);
+    fetchUpcoming(dispatch);
   }, []);
 
-  const TrendData = useSelector((state) => state.trending.movies) || {
+  const UpcomingData = useSelector((state) => state.upcoming.movies) || {
     results: [],
   };
-  console.log(TrendData);
+  console.log(UpcomingData);
 
   return (
     <div>
-      <h1>Trending</h1>
-      {TrendData.results &&
-        TrendData.results.map((movie) => (
+      <h1>Latest</h1>
+      {UpcomingData.results &&
+        UpcomingData.results.map((movie) => (
           <div key={movie.id}>
             <img
               style={{ width: "90%" }}
@@ -27,9 +27,6 @@ const TrendContainer = () => {
               key={movie.id}
             />
             <h3>{movie.name || movie.title}</h3>
-            <button onClick={() => deleteTrending(dispatch, movie.id)}>
-              영화 삭제
-            </button>
             <p>{movie.overview}</p>
           </div>
         ))}
@@ -37,4 +34,4 @@ const TrendContainer = () => {
   );
 };
 
-export default TrendContainer;
+export default UpcomingContainer;
